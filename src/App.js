@@ -8,11 +8,36 @@ const App = () => {
     {id: 3, order: 2, text: 'КАРТОЧКА 2'},
     {id: 4, order: 4, text: 'КАРТОЧКА 4'},
   ]);
+  const [currentCard, setCurrentCard] = useState(null);
+
+  function dragStartHandler(e, card) {
+    setCurrentCard(card)
+  }
+
+  function dragEndHandler(e) {
+    
+  }
+
+  function dragOverHandler(e) {
+    e.preventDefault();
+    e.target.style.background = 'lightgray'
+  }
+
+  function dropHandler(e, card) {
+    e.preventDefault();
+  }
 
   return (
     <div className="app">
       {cardList.map(card =>
-        <div className="card">
+        <div 
+          onDragStart={(e) => dragStartHandler(e, card)}
+          onDragLeave={(e) => dragEndHandler(e)}
+          onDragEnd={(e) => dragEndHandler(e)}
+          onDragOver={(e) => dragOverHandler(e)}
+          onDrop={(e) => dropHandler(e, card)}
+          draggable={true}
+          className="card">
           {card.text}
         </div>  
       )}
