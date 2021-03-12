@@ -15,7 +15,7 @@ const App = () => {
   }
 
   function dragEndHandler(e) {
-    
+    e.target.style.background = 'white'
   }
 
   function dragOverHandler(e) {
@@ -25,12 +25,23 @@ const App = () => {
 
   function dropHandler(e, card) {
     e.preventDefault();
+    setCardList(cardList.map(c => {
+      if(c.id === card.id) {
+        return {...c, order: currentCard.order}
+      }
+      if(c.id === currentCard.id) {
+        return {...c, order: card.order}
+      }
+      return c
+    }))
+    e.target.style.background = 'white'
   }
 
   return (
     <div className="app">
       {cardList.map(card =>
         <div 
+          key={card.id}
           onDragStart={(e) => dragStartHandler(e, card)}
           onDragLeave={(e) => dragEndHandler(e)}
           onDragEnd={(e) => dragEndHandler(e)}
