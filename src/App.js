@@ -37,9 +37,17 @@ const App = () => {
     e.target.style.background = 'white'
   }
 
+   const sortCards = (a, b) => {
+     if(a.order > b.order) {
+       return 1
+     } else {
+      return -1
+     }
+   }
+
   return (
     <div className="app">
-      {cardList.map(card =>
+      {cardList.sort(sortCards).map(card =>
         <div 
           key={card.id}
           onDragStart={(e) => dragStartHandler(e, card)}
