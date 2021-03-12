@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState} from 'react';
 import './App.css';
 
@@ -17,6 +18,8 @@ const App = () => {
     let files = [...e.dataTransfer.files]
     const formData = new FormData()
     formData.append('file', files[0])
+    formData.append('userId', 1)
+    axios.post('url', formData)
     setDrag(false);
   }
   return (
