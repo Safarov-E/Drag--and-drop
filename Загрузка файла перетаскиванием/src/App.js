@@ -8,13 +8,21 @@ const App = () => {
     e.preventDefault();
     setDrag(true);
   }
+  function dragLeaveHandler(e) {
+    e.preventDefault();
+    setDrag(false);
+  }
   return (
     <div className="app">
       {drag
-        ? <div className="drop-area">Отпустите файлы, чтобы загрузить их</div>
+        ? <div 
+            onDragStart={e => dragStartHandler(e)}
+            onDragLeave={e => dragLeaveHandler(e)}
+            onDragOver={e => dragStartHandler(e)}
+            className="drop-area">Отпустите файлы, чтобы загрузить их</div>
         : <div
             onDragStart={e => dragStartHandler(e)}
-            onDragLeave={e => }
+            onDragLeave={e => dragLeaveHandler(e)}
             onDragOver={e => dragStartHandler(e)}
           >Перетащите файлы, чтобы загрузить их</div>}
     </div>
