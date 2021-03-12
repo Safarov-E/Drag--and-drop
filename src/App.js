@@ -10,7 +10,12 @@ const App = () => {
   ]);
 
   return (
-    <div className="app"> 
+    <div className="app">
+      {cardList.map(card =>
+        <div className="card">
+          {card.text}
+        </div>  
+      )}
     </div>
   )
 }
