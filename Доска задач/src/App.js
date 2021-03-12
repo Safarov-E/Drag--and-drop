@@ -7,6 +7,25 @@ const App = () => {
     {id: 2, title: 'Проверить', items: [{id: 4, title: 'Код ревью'}, {id: 5, title: 'Задача на факториал'},{id: 6, title: 'Задача на фибоначи'}]},
     {id: 3, title: 'Сделано', items: [{id: 7, title: 'Открыть редактор'}, {id: 8, title: 'Смонтировать'},{id: 9, title: 'Отрендерить'}]}
   ])
+
+  function dragOverHandler(e, board, item) {
+    e.preventDefault();
+    if(e.target.className === 'item') {
+      e.target.style.boxShadow = '0 4px 3px gray'
+    }
+  }
+  function dragLeaveHandler(e) {
+    e.target.style.boxShadow = 'none'
+  }
+  function dragStartHandler(e) {
+    
+  }
+  function dragEndHandler(e) {
+    e.target.style.boxShadow = 'none'
+  }
+  function dropHandler(e, board, item) {
+    e.preventDefault();
+  }
   return (
     <div className="app">
       {boards.map(board =>
