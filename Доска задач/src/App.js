@@ -41,11 +41,31 @@ const App = () => {
       }
       return b
     }))
+    e.target.style.boxShadow = 'none'
+  }
+  function dropCardHandler(e, board) {
+    board.items.push(currentItem)
+    const currentIndex = currentBoard.items.indexOf(currentItem)
+    currentBoard.items.splice(currentIndex, 1)
+    setBoards(boards.map(b => {
+      if(b.id === boards.id) {
+        return board
+      }
+      if(b.id === currentBoard.id) {
+        return currentBoard
+      }
+      return b
+    }))
+    e.target.style.boxShadow = 'none'
   }
   return (
     <div className="app">
       {boards.map(board =>
-        <div className="board" key={board.id}>
+        <div 
+          onDragOver={(e) => dragOverHandler(e)}
+          onDrop={(e) => dropCardHandler(e, board)}
+          className="board" 
+          key={board.id}>
           <div className="board__title">{board.title}</div>
           {board.items.map(item => 
             <div 
