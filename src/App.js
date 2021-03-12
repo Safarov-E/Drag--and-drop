@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import './App'
 
-function App() {
+const App = () => {
+  const [cardList, setCardList] = useState([
+    {id: 1, order: 3, text: 'КАРТОЧКА 3'},
+    {id: 2, order: 1, text: 'КАРТОЧКА 1'},
+    {id: 3, order: 2, text: 'КАРТОЧКА 2'},
+    {id: 4, order: 4, text: 'КАРТОЧКА 4'},
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app"> 
     </div>
-  );
+  )
 }
 
 export default App;
