@@ -15,6 +15,7 @@ const App = () => {
   function onDropHandler(e) {
     e.preventDefault();
     let files = [...e.dataTransfer.files]
+    setDrag(false);
   }
   return (
     <div className="app">
