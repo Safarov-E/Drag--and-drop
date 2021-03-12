@@ -12,6 +12,10 @@ const App = () => {
     e.preventDefault();
     setDrag(false);
   }
+  function onDropHandler(e) {
+    e.preventDefault();
+    let files = [...e.dataTransfer.files]
+  }
   return (
     <div className="app">
       {drag
@@ -19,6 +23,7 @@ const App = () => {
             onDragStart={e => dragStartHandler(e)}
             onDragLeave={e => dragLeaveHandler(e)}
             onDragOver={e => dragStartHandler(e)}
+            onDrop={e => onDropHandler(e)}
             className="drop-area">Отпустите файлы, чтобы загрузить их</div>
         : <div
             onDragStart={e => dragStartHandler(e)}
